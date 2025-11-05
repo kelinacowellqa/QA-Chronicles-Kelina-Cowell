@@ -30,3 +30,15 @@ a.cta-btn:hover{ background:$teal; color:#0b0f14 !important; }
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,.35);
 }
+
+/* Flipbook */
+.flipbook{position:relative;margin:12px 0 16px;background:#0f1215;border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.35);overflow:hidden;}
+.flipbook .fb-page{display:block;width:100%;height:auto;user-select:none;}
+.fb-btn{position:absolute;top:50%;transform:translateY(-50%);background:#0d1117;border:1px solid #2b2f36;color:#00fff0;
+  font-weight:700;padding:10px 12px;border-radius:10px;cursor:pointer;}
+.fb-btn:hover{background:#00fff0;color:#0b0f14;}
+.fb-btn.prev{left:10px;} .fb-btn.next{right:10px;}
+.fb-meta{position:absolute;bottom:8px;right:10px;background:rgba(0,0,0,.5);padding:4px 8px;border-radius:8px;font-size:.9rem;}
+.flipbook .fb-page.flip{animation:pageflip 220ms ease;transform-origin:left center;}
+@keyframes pageflip{from{transform:rotateY(0)}to{transform:rotateY(12deg)}}
