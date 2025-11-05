@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/style.css">
+
 # QA Chronicles — Kelina Cowell
 
 Monthly, light-hearted illustrated posts that distil real QA lessons from my portfolio projects. All artwork is my own.
