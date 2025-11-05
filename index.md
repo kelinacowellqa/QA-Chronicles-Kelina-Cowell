@@ -9,26 +9,17 @@ Monthly, light-hearted illustrated posts that distil real QA lessons from my por
 ## Issue 1 — <em>If it doesn’t function, nothing else matters.</em>
 
 <p>
-  <a class="cta-btn" href="/assets/images/chronicles/issue%201.pdf" target="_blank" rel="noopener">
+  <a class="cta-btn" href="/assets/images/chronicles/issue-01.pdf" target="_blank" rel="noopener">
     Open Issue 1 (PDF) →
   </a>
 </p>
 
-<!-- Embedded page viewer (Issue 1) -->
-<iframe
-  class="pdf-embed"
-  src="https://mozilla.github.io/pdf.js/web/viewer.html?file=https%3A%2F%2Fkelinacowellqa.github.io%2FQA-Chronicles-Kelina-Cowell%2Fassets%2Fimages%2Fchronicles%2Fissue%25201.pdf#zoom=page-width&pagemode=none"
-  title="QA Chronicles — Issue 1 PDF viewer"
-  loading="lazy">
-</iframe>
-
-<p>
-  <a class="cta-btn" href="/assets/images/chronicles/issue%201.pdf" target="_blank" rel="noopener">Download Issue 1 (PDF) →</a>
-</p>
+<!-- Inline PDF (same-origin, reliable). If your file still has a space, rename to issue-01.pdf -->
+<embed class="pdf-embed" src="/assets/images/chronicles/issue-01.pdf#zoom=page-width" type="application/pdf">
 
 - **Summary:** A playful look at how keyboard ↔ controller context can get lost around Pause/Join-In/Resume, and the quick repros I use to catch it early.
 - **Based on:** <em>Battletoads — Functional Testing (input parity)</em>
-- **Case Study:** Wants Reciepts? [⬅ Go to My Battletoads QA Project](https://kelinacowellqa.github.io/Manual-QA-Portfolio-Kelina-Cowell/projects/battletoads/)
+- **Case study:** Wants Receipts? [⬅ Go to my Battletoads QA project](https://kelinacowell.github.io/Manual-QA-Portfolio-Kelina-Cowell/projects/battletoads/)
 - **LinkedIn post:** (add the URL here when published)
 
 [⬅ Back to Homepage](https://kelinacowellqa.github.io)
