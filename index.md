@@ -16,3 +16,8 @@ Monthly, light-hearted illustrated posts that distil real QA lessons from my por
 - **LinkedIn post:** (add the URL here when published)
 
 [⬅ Back to Homepage](https://kelinacowellqa.github.io)
+
+<p>
+  <a class="cta-btn" href="https://kelinacowellqa.github.io">⬅ Back to Portfolio Hub</a>
+</p>
+
