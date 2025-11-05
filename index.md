@@ -8,16 +8,44 @@ Monthly, light-hearted illustrated posts that distil real QA lessons from my por
 
 ## Issue 1 — <em>If it doesn’t function, nothing else matters.</em>
 
-<p>
-  <a class="cta-btn" href="{{ site.baseurl }}/assets/images/chronicles/issue-01.pdf" target="_blank" rel="noopener">
-    Open Issue 1 (PDF) →
-  </a>
-</p>
+<div class="flipbook" id="issue1">
+  <button class="fb-btn prev" aria-label="Previous page">←</button>
+  <img class="fb-page" src="" alt="">
+  <button class="fb-btn next" aria-label="Next page">→</button>
+  <div class="fb-meta"><span class="fb-count">1</span>/<span class="fb-total">1</span></div>
+</div>
 
-<!-- Inline PDF (same-origin, reliable) -->
-<embed class="pdf-embed"
-       src="{{ site.baseurl }}/assets/images/chronicles/issue-01.pdf#zoom=page-width"
-       type="application/pdf">
+<script>
+(function () {
+  const pages = [
+    "{{ site.baseurl }}/assets/images/chronicles/issue-01/page-1.png.png",
+    "{{ site.baseurl }}/assets/images/chronicles/issue-01/page-2.png.png",
+    "{{ site.baseurl }}/assets/images/chronicles/issue-01/page-3.png.png",
+    "{{ site.baseurl }}/assets/images/chronicles/issue-01/page-4.png.png",
+    "{{ site.baseurl }}/assets/images/chronicles/issue-01/page-5.png.png",
+    "{{ site.baseurl }}/assets/images/chronicles/issue-01/page-6.png.png",
+    "{{ site.baseurl }}/assets/images/chronicles/issue-01/page-7.png.png",
+    "{{ site.baseurl }}/assets/images/chronicles/issue-01/page-8.png.png",
+    "{{ site.baseurl }}/assets/images/chronicles/issue-01/page-9.png.png",
+    "{{ site.baseurl }}/assets/images/chronicles/issue-01/page-10.png.png"
+  ];
+  const root = document.getElementById('issue1');
+  const img = root.querySelector('.fb-page');
+  const count = root.querySelector('.fb-count');
+  const totalEl = root.querySelector('.fb-total'); let i=0;
+  function show(n){ i=(n+pages.length)%pages.length; img.classList.add('flip');
+    img.src=pages[i]; img.alt='Issue 1 page '+(i+1);
+    count.textContent=(i+1); totalEl.textContent=pages.length;
+    setTimeout(()=>img.classList.remove('flip'),220); }
+  root.querySelector('.prev').onclick=()=>show(i-1);
+  root.querySelector('.next').onclick=()=>show(i+1);
+  document.onkeydown=(e)=>{ if(e.key==='ArrowRight')show(i+1); if(e.key==='ArrowLeft')show(i-1); };
+  let sx=0; img.addEventListener('touchstart',e=>sx=e.changedTouches[0].clientX,{passive:true});
+  img.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>30){dx<0?show(i+1):show(i-1)}},{passive:true});
+  img.addEventListener('load',()=>{[ (i+1)%pages.length, (i-1+pages.length)%pages.length ].forEach(n=>{const a=new Image(); a.src=pages[n];});});
+  show(0);
+})();
+</script>
 
 - **Summary:** A playful look at how keyboard ↔ controller context can get lost around Pause/Join-In/Resume, and the quick repros I use to catch it early.
 - **Based on:** <em>Battletoads — Functional Testing (input parity)</em>
