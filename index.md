@@ -8,7 +8,11 @@ Monthly, light-hearted illustrated posts that distil real QA lessons from my por
 
 ## Issue 1 — <em>If it doesn’t function, nothing else matters.</em>
 
-[Open Issue 1 (PDF)](/assets/images/chronicles/issue-01.pdf)
+<p>
+  <a class="cta-btn" href="/assets/images/chronicles/issue%201.pdf" target="_blank" rel="noopener">
+    Open Issue 1 (PDF) →
+  </a>
+</p>
 
 - **Summary:** A playful look at how keyboard ↔ controller context can get lost around Pause/Join-In/Resume, and the quick repros I use to catch it early.
 - **Based on:** <em>Battletoads — Functional Testing (input parity)</em>
