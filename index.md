@@ -4,11 +4,12 @@ Monthly, light-hearted illustrated posts that distil real QA lessons from my por
 
 ---
 
-## Issue 1 — <em>Title of the post</em>
-![Issue 1 thumbnail](/assets/images/chronicles/issue-01-thumb.jpg)
+## Issue 1 — <em>Input Hand-off: Pause / Join-In Edge Cases</em>
 
-- **Summary:** One or two lines describing the lesson or bug theme.  
-- **Based on:** <em>Functional Testing Project - Battletoads</em>  
-- **LinkedIn post:** (add the URL after upload)
+[Open Issue 1 (PDF)](/assets/images/chronicles/issue-01.pdf)
+
+- **Summary:** A playful look at how keyboard ↔ controller context can get lost around Pause/Join-In/Resume, and the quick repros I use to catch it early.
+- **Based on:** <em>Battletoads — Functional Testing (input parity)</em>
+- **LinkedIn post:** (add the URL here when published)
 
 [⬅ Back to Homepage](https://kelinacowellqa.github.io)
