@@ -14,6 +14,18 @@ Monthly, light-hearted illustrated posts that distil real QA lessons from my por
   </a>
 </p>
 
+<!-- Inline preview of Issue 1 -->
+<object data="/assets/images/chronicles/issue%201.pdf"
+        type="application/pdf"
+        width="100%" height="640">
+  <p>
+    Your browser can’t display the PDF inline.
+    <a class="cta-btn" href="/assets/images/chronicles/issue%201.pdf" target="_blank" rel="noopener">
+      Open Issue 1 (PDF) →
+    </a>
+  </p>
+</object>
+
 - **Summary:** A playful look at how keyboard ↔ controller context can get lost around Pause/Join-In/Resume, and the quick repros I use to catch it early.
 - **Based on:** <em>Battletoads — Functional Testing (input parity)</em>
 - **Case Study:** Wants Reciepts? [⬅ Go to My Portfolio](https://kelinacowellqa.github.io/Manual-QA-Portfolio-Kelina-Cowell/projects/battletoads/)
