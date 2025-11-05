@@ -1,0 +1,23 @@
+---
+---
+@import "{{ site.theme }}";
+
+/* Dark/teal baseline */
+$bg:#121416; $text:#e5e5e5; $teal:#00fff0; $teal-soft:#66fff7;
+
+html,body{background:$bg !important;color:$text !important;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  font-family:"Segoe UI", Roboto, Helvetica, Arial, sans-serif}
+
+h1,h2,h3,h4,h5,h6,a{color:$teal !important}
+a:hover{color:$teal-soft !important; text-decoration:none}
+strong{color:inherit}
+
+/* CTA button (optional) */
+a.cta-btn{
+  display:inline-block;padding:10px 14px;border-radius:10px;
+  background:#0d1117;border:1px solid #2b2f36;color:$teal !important;
+  font-weight:700;letter-spacing:.2px;text-decoration:none;
+  transition:background .15s,color .15s;
+}
+a.cta-btn:hover{ background:$teal; color:#0b0f14 !important; }
