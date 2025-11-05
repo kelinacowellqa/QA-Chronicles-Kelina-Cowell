@@ -4,7 +4,7 @@ Monthly, light-hearted illustrated posts that distil real QA lessons from my por
 
 ---
 
-## Issue 1 — <em>Input Hand-off: Pause / Join-In Edge Cases</em>
+## Issue 1 — <em>If it doesn’t function, nothing else matters.</em>
 
 [Open Issue 1 (PDF)](/assets/images/chronicles/issue-01.pdf)
 
