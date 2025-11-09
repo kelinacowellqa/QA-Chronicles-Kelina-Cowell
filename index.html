@@ -126,76 +126,77 @@
     <p><a href="https://kelinacowellqa.github.io/Manual-QA-Portfolio-Kelina-Cowell/">⬅ Back to Homepage</a></p>
   </main>
 
- <script>
+<script>
 (function () {
-  // base path to your pages
-  const base = "/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/issue-01";
-  // page-1.png ... page-10.png
-  const pages = Array.from({ length: 10 }, (_, i) => `${base}/page-${i + 1}.png`);
+  // === CONFIG ===
+  const base = "/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/issue1";
+  const pageCount = 10;
+  const ext = "png";        // change to "jpg" only if your files are .jpg
+  const zeroPad = false;    // true only if files are page-01.png, page-02.png, ...
 
-  const root = document.getElementById('issue1');
-  const img = root.querySelector('.fb-page');
-  const prevBtn = root.querySelector('.prev');
-  const nextBtn = root.querySelector('.next');
-  const count = root.querySelector('.fb-count');
-  const totalEl = root.querySelector('.fb-total');
+  // Debug: see exactly what URL we'll load for page 1
+  console.log("Flipbook first image URL:", `${base}/page-${zeroPad ? String(1).padStart(2,"0") : 1}.${ext}`);
 
-  // a11y: announce page changes
-  const live = document.createElement('div');
-  live.setAttribute('aria-live', 'polite');
-  live.style.position = 'absolute';
-  live.style.left = '-9999px';
+  // Grab elements
+  const root = document.getElementById("issue1");
+  if (!root) { console.warn("Flipbook root #issue1 not found"); return; }
+
+  const img   = root.querySelector(".fb-page");
+  const prev  = root.querySelector(".prev");
+  const next  = root.querySelector(".next");
+  const count = root.querySelector(".fb-count");
+  const total = root.querySelector(".fb-total");
+
+  const pages = Array.from({ length: pageCount }, (_, i) => {
+    const n = zeroPad ? String(i + 1).padStart(2, "0") : (i + 1);
+    return `${base}/page-${n}.${ext}`;
+  });
+
+  // a11y live region
+  const live = document.createElement("div");
+  live.setAttribute("aria-live", "polite");
+  live.style.position = "absolute"; live.style.left = "-9999px";
   root.appendChild(live);
-
-  // a11y: expose keyboard hints
-  prevBtn.setAttribute('aria-keyshortcuts', 'ArrowLeft');
-  nextBtn.setAttribute('aria-keyshortcuts', 'ArrowRight');
 
   let i = 0;
   function show(n){
     i = (n + pages.length) % pages.length;
-    img.classList.add('flip');
+    img.classList.add("flip");
     img.src = pages[i];
-    img.alt = 'Issue 1 page ' + (i + 1);
+    img.alt = "Issue 1 page " + (i + 1);
     count.textContent = (i + 1);
-    totalEl.textContent = pages.length;
+    total.textContent = pages.length;
     live.textContent = `Page ${i + 1} of ${pages.length}`;
-    setTimeout(() => img.classList.remove('flip'), 220);
+    setTimeout(()=>img.classList.remove("flip"), 220);
   }
 
-  // click
-  prevBtn.onclick = () => show(i - 1);
-  nextBtn.onclick = () => show(i + 1);
+  prev.onclick = () => show(i - 1);
+  next.onclick = () => show(i + 1);
 
-  // keyboard (left/right + Enter/Space on buttons)
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') show(i + 1);
-    if (e.key === 'ArrowLeft')  show(i - 1);
-  });
-  [prevBtn, nextBtn].forEach(btn => {
-    btn.addEventListener('keydown', e => {
-      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); btn.click(); }
-    });
+  document.addEventListener("keydown", e => {
+    if (e.key === "ArrowRight") show(i + 1);
+    if (e.key === "ArrowLeft")  show(i - 1);
   });
 
   // touch swipe
   let sx = 0;
-  img.addEventListener('touchstart', e => sx = e.changedTouches[0].clientX, { passive: true });
-  img.addEventListener('touchend', e => {
+  img.addEventListener("touchstart", e => sx = e.changedTouches[0].clientX, {passive:true});
+  img.addEventListener("touchend", e => {
     const dx = e.changedTouches[0].clientX - sx;
     if (Math.abs(dx) > 30) { dx < 0 ? show(i + 1) : show(i - 1); }
-  }, { passive: true });
+  }, {passive:true});
 
-  // prefetch neighbors after load
-  img.addEventListener('load', () => {
+  // prefetch neighbors
+  img.addEventListener("load", () => {
     [ (i + 1) % pages.length, (i - 1 + pages.length) % pages.length ].forEach(n => {
       const a = new Image(); a.src = pages[n];
     });
   });
 
+  // Kick it off
   show(0);
 })();
-   <script>
+</script>
 (function () {
   // === CONFIG: update these 4 values if needed ===
 const base = "/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/issue1";
