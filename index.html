@@ -1,1 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QA Chronicles — Kelina Cowell</title>
+
+  <!-- Brand fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Site CSS (your file) -->
+  <link rel="stylesheet" href="/QA-Chronicles-Kelina-Cowell/assets/css/style.css">
+
+  <!-- Basic SEO / social -->
+  <meta name="description" content="Monthly, light-hearted illustrated posts that distil real QA lessons from my portfolio projects. All artwork by Kelina Cowell.">
+  <link rel="canonical" href="https://kelinacowellqa.github.io/QA-Chronicles-Kelina-Cowell/">
+  <meta property="og:title" content="QA Chronicles — Kelina Cowell">
+  <meta property="og:description" content="Monthly illustrated QA lessons and humorous testing carousels.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kelinacowellqa.github.io/QA-Chronicles-Kelina-Cowell/">
+  <meta property="og:image" content="https://kelinacowellqa.github.io/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/qa-chronicles-banner.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    /* Minimal brand skin to match portfolio */
+    :root{ --bg:#0b0f14; --panel:#0f1215; --text:#cfd6dd; --muted:#a9b3bd; --teal:#0fb5c9; }
+    html,body{ margin:0; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; }
+    body{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height:1.55; }
+    a{ color:var(--teal); text-decoration:none; }
+    .wrap{ max-width:1100px; margin:0 auto; padding:0 18px 60px; }
+    h1,h2,h3{ color:var(--teal); font-family:"Bebas Neue", sans-serif; letter-spacing:.2px; margin:22px 0 12px; }
+
+    /* Hero */
+    .hero{ max-width:1100px; margin:30px auto 20px; padding:0 18px; text-align:center; }
+    .hero img{ display:block; width:100%; height:auto; border-radius:16px; }
+
+    /* Outward teal pulse on the image */
+    .banner-pulse{ display:block; width:100%; height:auto; border-radius:16px; animation: imgOutPulse 4s ease-in-out infinite; }
+    @keyframes imgOutPulse{
+      0%,100%{ filter: drop-shadow(0 0 0 rgba(15,181,201,0)) brightness(1); }
+      50%    { filter: drop-shadow(0 0 34px rgba(15,181,201,.75)) brightness(1.06) saturate(1.04); }
+    }
+    header.hero::before, header.hero::after{ content:none !important; animation:none !important; box-shadow:none !important; }
+
+    /* Panel + small helpers */
+    .panel{ background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:16px 18px; }
+    .muted{ color:var(--muted); }
+
+    /* Flipbook minimal styles (works even without your style.css tweaks) */
+    .flipbook{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:10px; margin:18px 0; }
+    .flipbook .fb-btn{ background:#0d1117; color:var(--teal); border:1px solid #2b2f36; border-radius:10px; padding:8px 10px; font-weight:600; cursor:pointer; }
+    .flipbook .fb-btn:hover{ background:var(--teal); color:#0b0f14; }
+    .flipbook .fb-meta{ justify-self:center; font-weight:600; color:var(--muted); }
+    .flipbook .fb-page{ display:block; width:100%; height:auto; border-radius:12px; border:1px solid rgba(255,255,255,.08); box-shadow:0 6px 18px rgba(0,0,0,.35); transition:transform .22s ease; }
+    .flipbook .fb-page.flip{ transform:rotateY(6deg); }
+    @media (max-width:700px){ .flipbook{ grid-template-columns:1fr; grid-template-rows:auto auto auto; } .flipbook .fb-btn{ width:100%; } .flipbook .fb-meta{ order:3; } }
+  </style>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"QA Chronicles — Kelina Cowell","url":"https://kelinacowellqa.github.io/QA-Chronicles-Kelina-Cowell/","description":"Monthly illustrated QA lessons and humorous testing carousels.","author":{"@type":"Person","name":"Kelina Cowell"}}
+  </script>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <img class="banner-pulse"
+         src="/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/qa-chronicles-banner.webp"
+         alt="QA Chronicles — monthly illustrated QA lessons and humorous testing carousels by Kelina Cowell">
+  </header>
+
+  <main class="wrap">
+    <h1>QA Chronicles — Kelina Cowell</h1>
+    <p>Monthly, light-hearted illustrated posts that distil real QA lessons from my portfolio projects. All artwork is my own.</p>
+
+    <hr>
+
+    <h2>Issue 1 — <em>If it doesn’t function, nothing else matters.</em></h2>
+
+    <div class="flipbook" id="issue1">
+      <button class="fb-btn prev" aria-label="Previous page">←</button>
+      <img class="fb-page" src="" alt="">
+      <button class="fb-btn next" aria-label="Next page">→</button>
+      <div class="fb-meta"><span class="fb-count">1</span>/<span class="fb-total">1</span></div>
+    </div>
+
+    <noscript><p class="muted">Enable JavaScript to flip through the pages.</p></noscript>
+
+    <ul>
+      <li><strong>Summary:</strong> A playful look at how keyboard ↔ controller context can get lost around Pause/Join-In/Resume, and the quick repros I use to catch it early.</li>
+      <li><strong>Based on:</strong> <em>Battletoads — Functional Testing (input parity)</em></li>
+      <li><strong>Case study:</strong> Wants Receipts? <a href="https://kelinacowell.github.io/Manual-QA-Portfolio-Kelina-Cowell/projects/battletoads/">⬅ Go to my Battletoads QA project</a></li>
+      <li><strong>LinkedIn post:</strong> (add the URL here when published)</li>
+    </ul>
+
+    <p><a href="https://kelinacowellqa.github.io/Manual-QA-Portfolio-Kelina-Cowell/">⬅ Back to Homepage</a></p>
+  </main>
+
+  <script>
+  (function () {
+    // NOTE: fixed the double ".png.png" from the MD version and used absolute paths
+    const base = "/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/issue-01";
+    const pages = [
+      base + "/page-1.png",
+      base + "/page-2.png",
+      base + "/page-3.png",
+      base + "/page-4.png",
+      base + "/page-5.png",
+      base + "/page-6.png",
+      base + "/page-7.png",
+      base + "/page-8.png",
+      base + "/page-9.png",
+      base + "/page-10.png"
+    ];
+
+    const root = document.getElementById('issue1');
+    const img = root.querySelector('.fb-page');
+    const count = root.querySelector('.fb-count');
+    const totalEl = root.querySelector('.fb-total');
+    let i = 0;
+
+    function show(n){
+      i = (n + pages.length) % pages.length;
+      img.classList.add('flip');
+      img.src = pages[i];
+      img.alt = 'Issue 1 page ' + (i+1);
+      count.textContent = (i+1);
+      totalEl.textContent = pages.length;
+      setTimeout(()=>img.classList.remove('flip'), 220);
+    }
+
+    root.querySelector('.prev').onclick = () => show(i-1);
+    root.querySelector('.next').onclick = () => show(i+1);
+
+    document.addEventListener('keydown', e => {
+      if(e.key==='ArrowRight') show(i+1);
+      if(e.key==='ArrowLeft')  show(i-1);
+    });
+
+    let sx=0;
+    img.addEventListener('touchstart', e => sx = e.changedTouches[0].clientX, {passive:true});
+    img.addEventListener('touchend',   e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if(Math.abs(dx)>30){ dx<0 ? show(i+1) : show(i-1); }
+    }, {passive:true});
+
+    img.addEventListener('load', () => {
+      // lightweight prefetch of neighbors
+      [ (i+1)%pages.length, (i-1+pages.length)%pages.length ].forEach(n => { const a=new Image(); a.src=pages[n]; });
+    });
+
+    show(0);
+  })();
+  </script>
+</body>
+</html>
 
