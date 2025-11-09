@@ -199,9 +199,9 @@
 (function () {
   // === CONFIG: update these 4 values if needed ===
 const base = "/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/issue1";
-const pageCount = 10;
-const ext = "png";      // use "jpg" if your files are .jpg
-const zeroPad = false;  // set true only if files are page-01.png, etc.
+const pageCount = 10;     // adjust if you add/remove pages
+const ext = "png";        // your files are .png
+const zeroPad = false;    // filenames are page-1.png, page-2.png, ...
 
   const pages = Array.from({ length: pageCount }, (_, i) => {
     const n = zeroPad ? String(i + 1).padStart(2, "0") : (i + 1);
