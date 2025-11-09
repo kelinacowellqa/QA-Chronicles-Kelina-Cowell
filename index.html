@@ -102,12 +102,17 @@
 
     <h2>Issue 1 — <em>If it doesn’t function, nothing else matters.</em></h2>
 
-    <div class="flipbook" id="issue1">
-      <button class="fb-btn prev" aria-label="Previous page">←</button>
-      <img class="fb-page" src="" alt="">
-      <button class="fb-btn next" aria-label="Next page">→</button>
-      <div class="fb-meta"><span class="fb-count">1</span>/<span class="fb-total">1</span></div>
+   <!-- ISSUE 1: Flipbook -->
+<section id="issue1" class="flipbook wrap" aria-label="Issue 1 flipbook">
+  <button type="button" class="fb-btn prev" aria-label="Previous page">←</button>
+  <div class="panel" style="padding:12px;">
+    <img class="fb-page" src="" alt="Issue 1 page 1" loading="eager" decoding="async" />
+    <div class="fb-meta">
+      <span class="fb-count">1</span>/<span class="fb-total">?</span>
     </div>
+  </div>
+  <button type="button" class="fb-btn next" aria-label="Next page">→</button>
+</section>
 
     <noscript><p class="muted">Enable JavaScript to flip through the pages.</p></noscript>
 
@@ -182,6 +187,70 @@
   }, { passive: true });
 
   // prefetch neighbors after load
+  img.addEventListener('load', () => {
+    [ (i + 1) % pages.length, (i - 1 + pages.length) % pages.length ].forEach(n => {
+      const a = new Image(); a.src = pages[n];
+    });
+  });
+
+  show(0);
+})();
+   <script>
+(function () {
+  // === CONFIG: update these 4 values if needed ===
+  const base = "/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/issue-01";
+  const pageCount = 10;      // how many pages you actually have
+  const ext = "png";         // "png" or "jpg"
+  const zeroPad = false;     // true if files are page-01.png, page-02.png, ...
+
+  const pages = Array.from({ length: pageCount }, (_, i) => {
+    const n = zeroPad ? String(i + 1).padStart(2, "0") : (i + 1);
+    return `${base}/page-${n}.${ext}`;
+  });
+
+  const root  = document.getElementById('issue1');
+  if (!root) return;
+  const img   = root.querySelector('.fb-page');
+  const prev  = root.querySelector('.prev');
+  const next  = root.querySelector('.next');
+  const count = root.querySelector('.fb-count');
+  const total = root.querySelector('.fb-total');
+
+  // a11y live region
+  const live = document.createElement('div');
+  live.setAttribute('aria-live','polite');
+  live.style.position='absolute'; live.style.left='-9999px';
+  root.appendChild(live);
+
+  let i = 0;
+  function show(n){
+    i = (n + pages.length) % pages.length;
+    img.classList.add('flip');
+    img.src = pages[i];
+    img.alt = 'Issue 1 page ' + (i + 1);
+    count.textContent = (i + 1);
+    total.textContent = pages.length;
+    live.textContent = `Page ${i + 1} of ${pages.length}`;
+    setTimeout(()=>img.classList.remove('flip'), 220);
+  }
+
+  prev.onclick = () => show(i - 1);
+  next.onclick = () => show(i + 1);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') show(i + 1);
+    if (e.key === 'ArrowLeft')  show(i - 1);
+  });
+
+  // touch swipe
+  let sx=0;
+  img.addEventListener('touchstart', e => sx = e.changedTouches[0].clientX, {passive:true});
+  img.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 30) { dx < 0 ? show(i + 1) : show(i - 1); }
+  }, {passive:true});
+
+  // prefetch neighbors
   img.addEventListener('load', () => {
     [ (i + 1) % pages.length, (i - 1 + pages.length) % pages.length ].forEach(n => {
       const a = new Image(); a.src = pages[n];
