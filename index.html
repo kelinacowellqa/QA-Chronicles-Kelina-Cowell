@@ -1,4 +1,4 @@
-<!doctype html> 
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -8,7 +8,7 @@
   <!-- Brand fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Site CSS (your file) -->
+  <!-- Site CSS (optional extra styles file if you have one) -->
   <link rel="stylesheet" href="/QA-Chronicles-Kelina-Cowell/assets/css/style.css">
 
   <!-- Basic SEO / social -->
@@ -46,38 +46,15 @@
     .panel{ background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:16px 18px; }
     .muted{ color:var(--muted); }
 
-    /* Flipbook minimal styles (works even without your style.css tweaks) */
+    /* Flipbook styles */
     .flipbook{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:10px; margin:18px 0; }
-    .flipbook .fb-btn{ background:#0d1117; color:var(--teal); border:1px solid #2b2f36; border-radius:10px; padding:8px 10px; font-weight:600; cursor:pointer; }
+    .flipbook .fb-btn{ background:#0d1117; color:var(--teal); border:1px solid #2b2f36; border-radius:10px; padding:8px 10px; font-weight:600; cursor:pointer; transition:background .2s ease, color .2s ease, transform .15s ease; }
     .flipbook .fb-btn:hover{ background:var(--teal); color:#0b0f14; }
-    .flipbook .fb-meta{ justify-self:center; font-weight:600; color:var(--muted); }
+    .flipbook .fb-btn:focus{ outline:2px solid var(--teal); outline-offset:2px; }
+    .flipbook .fb-meta{ justify-self:center; font-weight:700; color:var(--muted); }
     .flipbook .fb-page{ display:block; width:100%; height:auto; border-radius:12px; border:1px solid rgba(255,255,255,.08); box-shadow:0 6px 18px rgba(0,0,0,.35); transition:transform .22s ease; }
     .flipbook .fb-page.flip{ transform:rotateY(6deg); }
-    @media (max-width:700px){ .flipbook{ grid-template-columns:1fr; grid-template-rows:auto auto auto; } .flipbook .fb-btn{ width:100%; } .flipbook .fb-meta{ order:3; } }
-  
-  /* Flipbook UI polish */
-.flipbook{
-  display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:10px;
-  margin:18px 0;
-}
-.fb-btn{
-  background:#0d1117; color:#0fb5c9; border:1px solid #2b2f36;
-  border-radius:10px; padding:8px 12px; font-weight:700; cursor:pointer;
-  transition:background .2s ease, color .2s ease, transform .15s ease;
-}
-.fb-btn:hover{ background:#0fb5c9; color:#0b0f14; }
-.fb-btn:focus{ outline:2px solid #0fb5c9; outline-offset:2px; }
-.fb-page{
-  display:block; width:100%; height:auto;
-  border-radius:12px; border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 6px 18px rgba(0,0,0,.35);
-}
-.fb-meta{ color:#a9b3bd; font-weight:700; }
-@media (max-width:700px){
-  .flipbook{ grid-template-columns:1fr; grid-template-rows:auto auto auto; }
-  .fb-btn{ width:100%; }
-  .fb-meta{ justify-self:center; }
-}
+    @media (max-width:700px){ .flipbook{ grid-template-columns:1fr; grid-template-rows:auto auto auto; } .flipbook .fb-btn{ width:100%; } .flipbook .fb-meta{ order:3; justify-self:center; } }
   </style>
 
   <!-- JSON-LD -->
@@ -102,17 +79,17 @@
 
     <h2>Issue 1 — <em>If it doesn’t function, nothing else matters.</em></h2>
 
-   <!-- ISSUE 1: Flipbook -->
-<section id="issue1" class="flipbook wrap" aria-label="Issue 1 flipbook">
-  <button type="button" class="fb-btn prev" aria-label="Previous page">←</button>
-  <div class="panel" style="padding:12px;">
-    <img class="fb-page" src="" alt="Issue 1 page 1" loading="eager" decoding="async" />
-    <div class="fb-meta">
-      <span class="fb-count">1</span>/<span class="fb-total">?</span>
-    </div>
-  </div>
-  <button type="button" class="fb-btn next" aria-label="Next page">→</button>
-</section>
+    <!-- ISSUE 1: Flipbook -->
+    <section id="issue1" class="flipbook wrap" aria-label="Issue 1 flipbook">
+      <button type="button" class="fb-btn prev" aria-label="Previous page">←</button>
+      <div class="panel" style="padding:12px;">
+        <img class="fb-page" src="" alt="Issue 1 page 1" loading="eager" decoding="async" />
+        <div class="fb-meta">
+          <span class="fb-count">1</span>/<span class="fb-total">?</span>
+        </div>
+      </div>
+      <button type="button" class="fb-btn next" aria-label="Next page">→</button>
+    </section>
 
     <noscript><p class="muted">Enable JavaScript to flip through the pages.</p></noscript>
 
@@ -126,141 +103,84 @@
     <p><a href="https://kelinacowellqa.github.io/Manual-QA-Portfolio-Kelina-Cowell/">⬅ Back to Homepage</a></p>
   </main>
 
-<script>
-(function () {
-  // === CONFIG ===
-  const base = "/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/issue1";
-  const pageCount = 10;
-  const ext = "png";        // change to "jpg" only if your files are .jpg
-  const zeroPad = false;    // true only if files are page-01.png, page-02.png, ...
+  <!-- Flipbook initializer (single, clean) -->
+  <script>
+  (function () {
+    // === CONFIG: update if filenames change ===
+    const base = "/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/issue1";
+    const pageCount = 10;     // how many pages you actually have
+    const ext = "png";        // "png" or "jpg"
+    const zeroPad = false;    // true only if files are page-01.png
 
-  // Debug: see exactly what URL we'll load for page 1
-  console.log("Flipbook first image URL:", `${base}/page-${zeroPad ? String(1).padStart(2,"0") : 1}.${ext}`);
+    // Debug: print the first URL we're about to load
+    console.log("[Flipbook] First URL:", `${base}/page-${zeroPad ? String(1).padStart(2,"0") : 1}.${ext}`);
 
-  // Grab elements
-  const root = document.getElementById("issue1");
-  if (!root) { console.warn("Flipbook root #issue1 not found"); return; }
+    // Elements
+    const root  = document.getElementById("issue1");
+    if (!root) { console.warn("[Flipbook] #issue1 not found"); return; }
 
-  const img   = root.querySelector(".fb-page");
-  const prev  = root.querySelector(".prev");
-  const next  = root.querySelector(".next");
-  const count = root.querySelector(".fb-count");
-  const total = root.querySelector(".fb-total");
+    const img   = root.querySelector(".fb-page");
+    const prev  = root.querySelector(".prev");
+    const next  = root.querySelector(".next");
+    const count = root.querySelector(".fb-count");
+    const total = root.querySelector(".fb-total");
 
-  const pages = Array.from({ length: pageCount }, (_, i) => {
-    const n = zeroPad ? String(i + 1).padStart(2, "0") : (i + 1);
-    return `${base}/page-${n}.${ext}`;
-  });
+    if (!img || !prev || !next || !count || !total) {
+      console.warn("[Flipbook] Missing required elements"); return;
+    }
 
-  // a11y live region
-  const live = document.createElement("div");
-  live.setAttribute("aria-live", "polite");
-  live.style.position = "absolute"; live.style.left = "-9999px";
-  root.appendChild(live);
-
-  let i = 0;
-  function show(n){
-    i = (n + pages.length) % pages.length;
-    img.classList.add("flip");
-    img.src = pages[i];
-    img.alt = "Issue 1 page " + (i + 1);
-    count.textContent = (i + 1);
-    total.textContent = pages.length;
-    live.textContent = `Page ${i + 1} of ${pages.length}`;
-    setTimeout(()=>img.classList.remove("flip"), 220);
-  }
-
-  prev.onclick = () => show(i - 1);
-  next.onclick = () => show(i + 1);
-
-  document.addEventListener("keydown", e => {
-    if (e.key === "ArrowRight") show(i + 1);
-    if (e.key === "ArrowLeft")  show(i - 1);
-  });
-
-  // touch swipe
-  let sx = 0;
-  img.addEventListener("touchstart", e => sx = e.changedTouches[0].clientX, {passive:true});
-  img.addEventListener("touchend", e => {
-    const dx = e.changedTouches[0].clientX - sx;
-    if (Math.abs(dx) > 30) { dx < 0 ? show(i + 1) : show(i - 1); }
-  }, {passive:true});
-
-  // prefetch neighbors
-  img.addEventListener("load", () => {
-    [ (i + 1) % pages.length, (i - 1 + pages.length) % pages.length ].forEach(n => {
-      const a = new Image(); a.src = pages[n];
+    // Build list of page URLs
+    const pages = Array.from({ length: pageCount }, (_, i) => {
+      const n = zeroPad ? String(i + 1).padStart(2, "0") : (i + 1);
+      return `${base}/page-${n}.${ext}`;
     });
-  });
 
-  // Kick it off
-  show(0);
-})();
-</script>
-(function () {
-  // === CONFIG: update these 4 values if needed ===
-const base = "/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/issue1";
-const pageCount = 10;     // adjust if you add/remove pages
-const ext = "png";        // your files are .png
-const zeroPad = false;    // filenames are page-1.png, page-2.png, ...
+    // a11y live region
+    const live = document.createElement("div");
+    live.setAttribute("aria-live","polite");
+    live.style.position="absolute"; live.style.left="-9999px";
+    root.appendChild(live);
 
-  const pages = Array.from({ length: pageCount }, (_, i) => {
-    const n = zeroPad ? String(i + 1).padStart(2, "0") : (i + 1);
-    return `${base}/page-${n}.${ext}`;
-  });
+    let i = 0;
+    function show(n){
+      i = (n + pages.length) % pages.length;
+      img.classList.add("flip");
+      img.src = pages[i];
+      img.alt = "Issue 1 page " + (i + 1);
+      count.textContent = (i + 1);
+      total.textContent = pages.length;
+      live.textContent = `Page ${i + 1} of ${pages.length}`;
+      setTimeout(()=>img.classList.remove("flip"), 220);
+    }
 
-  const root  = document.getElementById('issue1');
-  if (!root) return;
-  const img   = root.querySelector('.fb-page');
-  const prev  = root.querySelector('.prev');
-  const next  = root.querySelector('.next');
-  const count = root.querySelector('.fb-count');
-  const total = root.querySelector('.fb-total');
+    // Controls
+    prev.onclick = () => show(i - 1);
+    next.onclick = () => show(i + 1);
 
-  // a11y live region
-  const live = document.createElement('div');
-  live.setAttribute('aria-live','polite');
-  live.style.position='absolute'; live.style.left='-9999px';
-  root.appendChild(live);
-
-  let i = 0;
-  function show(n){
-    i = (n + pages.length) % pages.length;
-    img.classList.add('flip');
-    img.src = pages[i];
-    img.alt = 'Issue 1 page ' + (i + 1);
-    count.textContent = (i + 1);
-    total.textContent = pages.length;
-    live.textContent = `Page ${i + 1} of ${pages.length}`;
-    setTimeout(()=>img.classList.remove('flip'), 220);
-  }
-
-  prev.onclick = () => show(i - 1);
-  next.onclick = () => show(i + 1);
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') show(i + 1);
-    if (e.key === 'ArrowLeft')  show(i - 1);
-  });
-
-  // touch swipe
-  let sx=0;
-  img.addEventListener('touchstart', e => sx = e.changedTouches[0].clientX, {passive:true});
-  img.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - sx;
-    if (Math.abs(dx) > 30) { dx < 0 ? show(i + 1) : show(i - 1); }
-  }, {passive:true});
-
-  // prefetch neighbors
-  img.addEventListener('load', () => {
-    [ (i + 1) % pages.length, (i - 1 + pages.length) % pages.length ].forEach(n => {
-      const a = new Image(); a.src = pages[n];
+    document.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight") show(i + 1);
+      if (e.key === "ArrowLeft")  show(i - 1);
     });
-  });
 
-  show(0);
-})();
-</script>
+    // Touch swipe
+    let sx=0;
+    img.addEventListener("touchstart", e => sx = e.changedTouches[0].clientX, {passive:true});
+    img.addEventListener("touchend", e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 30) { dx < 0 ? show(i + 1) : show(i - 1); }
+    }, {passive:true});
+
+    // Prefetch neighbors
+    img.addEventListener("load", () => {
+      [ (i + 1) % pages.length, (i - 1 + pages.length) % pages.length ].forEach(n => {
+        const a = new Image(); a.src = pages[n];
+      });
+    });
+
+    // Kick it off
+    show(0);
+  })();
+  </script>
 </body>
 </html>
 
