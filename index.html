@@ -20,52 +20,187 @@
 
   <style>
     /* Minimal brand skin to match portfolio */
-    :root{ --bg:#0b0f14; --panel:#0f1215; --text:#cfd6dd; --muted:#a9b3bd; --teal:#0fb5c9; }
-    html,body{ margin:0; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; }
-    body{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height:1.55; }
-    a{ color:var(--teal); text-decoration:none; }
-    .wrap{ max-width:1100px; margin:0 auto; padding:0 18px 60px; }
-    h1,h2,h3{ color:var(--teal); font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    :root{
+      --bg:#0b0f14;
+      --panel:#0f1215;
+      --text:#cfd6dd;
+      --muted:#a9b3bd;
+      --teal:#0fb5c9;
+    }
+
+    html,
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    body{
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.55;
+    }
+
+    a{
+      color:var(--teal);
+      text-decoration:none;
+    }
+
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 18px 60px;
+    }
+
+    h1,
+    h2,
+    h3{
+      color:var(--teal);
+      font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      font-weight:600;
+      letter-spacing:0.02em;
+      margin:0 0 12px;
+    }
 
     /* Hero */
-    .hero{ max-width:1100px; margin:30px auto 20px; padding:0 18px; text-align:center; }
-    .hero img{ display:block; width:100%; height:auto; border-radius:16px; }
+    .hero{
+      max-width:1100px;
+      margin:30px auto 20px;
+      padding:0 18px;
+      text-align:center;
+    }
+
+    .hero img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:16px;
+    }
 
     /* Outward teal pulse on the image */
-    .banner-pulse{ display:block; width:100%; height:auto; border-radius:16px; animation: imgOutPulse 4s ease-in-out infinite; }
-    @keyframes imgOutPulse{
-      0%,100%{ filter: drop-shadow(0 0 0 rgba(15,181,201,0)) brightness(1); }
-      50%    { filter: drop-shadow(0 0 34px rgba(15,181,201,.75)) brightness(1.06) saturate(1.04); }
+    .banner-pulse{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:16px;
+      animation:imgOutPulse 4s ease-in-out infinite;
     }
-    header.hero::before, header.hero::after{ content:none !important; animation:none !important; box-shadow:none !important; }
+
+    @keyframes imgOutPulse{
+      0%,100%{
+        filter:drop-shadow(0 0 0 rgba(15,181,201,0)) brightness(1);
+      }
+      50%{
+        filter:drop-shadow(0 0 34px rgba(15,181,201,.75)) brightness(1.06) saturate(1.04);
+      }
+    }
+
+    header.hero::before,
+    header.hero::after{
+      content:none !important;
+      animation:none !important;
+      box-shadow:none !important;
+    }
 
     /* Panel + small helpers */
-    .panel{ background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:16px 18px; }
-    .muted{ color:var(--muted); }
+    .panel{
+      background:var(--panel);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:16px 18px;
+    }
+
+    .muted{
+      color:var(--muted);
+    }
 
     /* Flipbook styles */
-    .flipbook{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:10px; margin:18px 0; }
-    .flipbook .fb-btn{ background:#0d1117; color:var(--teal); border:1px solid #2b2f36; border-radius:10px; padding:8px 10px; font-weight:600; cursor:pointer; transition:background .2s ease, color .2s ease, transform .15s ease; }
-    .flipbook .fb-btn:hover{ background:var(--teal); color:#0b0f14; }
-    .flipbook .fb-btn:focus{ outline:2px solid var(--teal); outline-offset:2px; }
-    .flipbook .fb-meta{ justify-self:center; font-weight:700; color:var(--muted); }
-    .flipbook .fb-page{ display:block; width:100%; height:auto; border-radius:12px; border:1px solid rgba(255,255,255,.08); box-shadow:0 6px 18px rgba(0,0,0,.35); transition:transform .22s ease; }
-    .flipbook .fb-page.flip{ transform:rotateY(6deg); }
-    @media (max-width:700px){ .flipbook{ grid-template-columns:1fr; grid-template-rows:auto auto auto; } .flipbook .fb-btn{ width:100%; } .flipbook .fb-meta{ order:3; justify-self:center; } }
+    .flipbook{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:10px;
+      margin:18px 0;
+    }
+
+    .flipbook .fb-btn{
+      background:#0d1117;
+      color:var(--teal);
+      border:1px solid #2b2f36;
+      border-radius:10px;
+      padding:8px 10px;
+      font-weight:600;
+      cursor:pointer;
+      transition:background .2s ease,color .2s ease,transform .15s ease;
+    }
+
+    .flipbook .fb-btn:hover{
+      background:var(--teal);
+      color:#0b0f14;
+    }
+
+    .flipbook .fb-btn:focus{
+      outline:2px solid var(--teal);
+      outline-offset:2px;
+    }
+
+    .flipbook .fb-meta{
+      justify-self:center;
+      font-weight:700;
+      color:var(--muted);
+    }
+
+    .flipbook .fb-page{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 6px 18px rgba(0,0,0,.35);
+      transition:transform .22s ease;
+    }
+
+    .flipbook .fb-page.flip{
+      transform:rotateY(6deg);
+    }
+
+    @media (max-width:700px){
+      .flipbook{
+        grid-template-columns:1fr;
+        grid-template-rows:auto auto auto;
+      }
+      .flipbook .fb-btn{
+        width:100%;
+      }
+      .flipbook .fb-meta{
+        order:3;
+        justify-self:center;
+      }
+    }
   </style>
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebPage","name":"QA Chronicles — Kelina Cowell","url":"https://kelinacowellqa.github.io/QA-Chronicles-Kelina-Cowell/","description":"Monthly illustrated QA lessons and humorous testing carousels.","author":{"@type":"Person","name":"Kelina Cowell"}}
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"QA Chronicles — Kelina Cowell",
+    "url":"https://kelinacowellqa.github.io/QA-Chronicles-Kelina-Cowell/",
+    "description":"Monthly illustrated QA lessons and humorous testing carousels.",
+    "author":{"@type":"Person","name":"Kelina Cowell"}
+  }
   </script>
 </head>
 <body>
 
   <!-- Hero -->
   <header class="hero">
-    <img class="banner-pulse"
-         src="/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/qa-chronicles-banner.webp"
-         alt="QA Chronicles — monthly illustrated QA lessons and humorous testing carousels by Kelina Cowell">
+    <img
+      class="banner-pulse"
+      src="/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/qa-chronicles-banner.webp"
+      alt="QA Chronicles — monthly illustrated QA lessons and humorous testing carousels by Kelina Cowell"
+    >
   </header>
 
   <main class="wrap">
@@ -74,7 +209,7 @@
 
     <h2>Issue 1 — <em>If it doesn’t function, nothing else matters.</em></h2>
 
-       <ul>
+    <ul>
       <li><strong>Summary:</strong> A playful look at how keyboard ↔ controller context can get lost around Pause/Join-In/Resume, and the quick repros I use to catch it early.</li>
       <li><strong>Based on:</strong> <em>Battletoads — Functional Testing (input parity)</em></li>
       <li><strong>Case study:</strong> Wants Receipts? <a href="https://kelinacowell.github.io/Manual-QA-Portfolio-Kelina-Cowell/projects/battletoads/">⬅ Go to my Battletoads QA project</a></li>
@@ -99,18 +234,16 @@
 
   </main>
 
-  <!-- Flipbook initializer (single, clean) -->
+  <!-- Flipbook initializer -->
   <script>
   (function () {
-    // === CONFIG (update if filenames change) ===
     const base = "/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/issue1";
     const pageCount = 10;
-    const ext = "png";        // "png" or "jpg"
-    const zeroPad = false;    // true only if files are page-01.png
+    const ext = "png";
+    const zeroPad = false;
 
-    // Elements
     const root  = document.getElementById("issue1");
-    if (!root) { console.warn("[Flipbook] #issue1 not found"); return; }
+    if (!root) return;
 
     const img   = root.querySelector(".fb-page");
     const prev  = root.querySelector(".prev");
@@ -118,23 +251,21 @@
     const count = root.querySelector(".fb-count");
     const total = root.querySelector(".fb-total");
 
-    if (!img || !prev || !next || !count || !total) {
-      console.warn("[Flipbook] Missing required elements"); return;
-    }
+    if (!img || !prev || !next || !count || !total) return;
 
-    // Build page list
     const pages = Array.from({ length: pageCount }, (_, i) => {
       const n = zeroPad ? String(i + 1).padStart(2, "0") : (i + 1);
       return `${base}/page-${n}.${ext}`;
     });
 
-    // a11y live region
     const live = document.createElement("div");
     live.setAttribute("aria-live","polite");
-    live.style.position="absolute"; live.style.left="-9999px";
+    live.style.position="absolute";
+    live.style.left="-9999px";
     root.appendChild(live);
 
     let i = 0;
+
     function show(n){
       i = (n + pages.length) % pages.length;
       img.classList.add("flip");
@@ -143,10 +274,9 @@
       count.textContent = (i + 1);
       total.textContent = pages.length;
       live.textContent = `Page ${i + 1} of ${pages.length}`;
-      setTimeout(()=>img.classList.remove("flip"), 220);
+      setTimeout(() => img.classList.remove("flip"), 220);
     }
 
-    // Controls
     prev.onclick = () => show(i - 1);
     next.onclick = () => show(i + 1);
 
@@ -155,26 +285,31 @@
       if (e.key === "ArrowLeft")  show(i - 1);
     });
 
-    // Touch swipe
-    let sx=0;
-    img.addEventListener("touchstart", e => sx = e.changedTouches[0].clientX, {passive:true});
+    let sx = 0;
+    img.addEventListener("touchstart", e => {
+      sx = e.changedTouches[0].clientX;
+    }, { passive:true });
+
     img.addEventListener("touchend", e => {
       const dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 30) { dx < 0 ? show(i + 1) : show(i - 1); }
-    }, {passive:true});
+      if (Math.abs(dx) > 30){
+        if (dx < 0) show(i + 1);
+        else show(i - 1);
+      }
+    }, { passive:true });
 
-    // Prefetch neighbors
     img.addEventListener("load", () => {
       [ (i + 1) % pages.length, (i - 1 + pages.length) % pages.length ].forEach(n => {
-        const a = new Image(); a.src = pages[n];
+        const a = new Image();
+        a.src = pages[n];
       });
     });
 
-    // Start
     show(0);
   })();
   </script>
 </body>
 </html>
+
 
 
