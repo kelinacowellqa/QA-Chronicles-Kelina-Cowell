@@ -33,3 +33,13 @@ a.cta-btn:hover{ background:$teal; color:#0b0f14 !important; }
 .fb-meta{position:absolute;bottom:8px;right:10px;background:rgba(0,0,0,.5);padding:4px 8px;border-radius:8px;font-size:.9rem;}
 .flipbook .fb-page.flip{animation:pageflip 220ms ease;transform-origin:left center;}
 @keyframes pageflip{from{transform:rotateY(0)}to{transform:rotateY(12deg)}}
+
+.site-nav.cta-row{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px 12px;
+  margin:10px auto 0;
+}
+.site-nav.cta-row .cta-btn{ margin:0; } /* remove any leftover per-button margins */
+
