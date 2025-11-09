@@ -8,7 +8,7 @@
   <!-- Brand fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Site CSS (optional extra styles file if you have one) -->
+  <!-- Optional site CSS (ok if this 404s; page still works with inline styles) -->
   <link rel="stylesheet" href="/QA-Chronicles-Kelina-Cowell/assets/css/style.css">
 
   <!-- Basic SEO / social -->
@@ -106,14 +106,11 @@
   <!-- Flipbook initializer (single, clean) -->
   <script>
   (function () {
-    // === CONFIG: update if filenames change ===
+    // === CONFIG (update if filenames change) ===
     const base = "/QA-Chronicles-Kelina-Cowell/assets/images/chronicles/issue1";
-    const pageCount = 10;     // how many pages you actually have
+    const pageCount = 10;
     const ext = "png";        // "png" or "jpg"
     const zeroPad = false;    // true only if files are page-01.png
-
-    // Debug: print the first URL we're about to load
-    console.log("[Flipbook] First URL:", `${base}/page-${zeroPad ? String(1).padStart(2,"0") : 1}.${ext}`);
 
     // Elements
     const root  = document.getElementById("issue1");
@@ -129,7 +126,7 @@
       console.warn("[Flipbook] Missing required elements"); return;
     }
 
-    // Build list of page URLs
+    // Build page list
     const pages = Array.from({ length: pageCount }, (_, i) => {
       const n = zeroPad ? String(i + 1).padStart(2, "0") : (i + 1);
       return `${base}/page-${n}.${ext}`;
@@ -177,10 +174,11 @@
       });
     });
 
-    // Kick it off
+    // Start
     show(0);
   })();
   </script>
 </body>
 </html>
+
 
